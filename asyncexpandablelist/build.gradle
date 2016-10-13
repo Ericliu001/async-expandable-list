@@ -27,3 +27,32 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
 }
+
+
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'async-expandable-list'
+
+    publishedGroupId = 'com.ericliu.asyncexpandablelist'
+    libraryName = 'async-expandable-list'
+    artifact = 'asyncexpandablelist'
+    libraryDescription = 'Async loads'
+
+    siteUrl = 'https://github.com/Ericliu001/async-expandable-list'
+    gitUrl = 'https://github.com/Ericliu001/async-expandable-list.git'
+
+    libraryVersion = 'v1.0.1'
+
+    licenseName = 'The MIT License (MIT)'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+
+    developerId = 'ericliu001'
+    developerName = 'Eric Liu'
+    developerEmail = 'eric.liu.developer@gmail.com'
+}
+
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
