@@ -58,7 +58,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
         mInventory.mGroups.clear();
     }
 
-    public void notifyDataSetChanged(final Inventory<T1, T2> inventory) {
+    public void updateInventory(final Inventory<T1, T2> inventory) {
         mInventory = new Inventory<T1, T2>(inventory);
         mAdapter.notifyDataSetChanged();
     }
