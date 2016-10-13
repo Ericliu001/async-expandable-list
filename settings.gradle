@@ -1,1 +1,1 @@
-include ':asyncexpandablelist', ':sample'
+include ':asyncexpandablelist', ':sampleapp'
