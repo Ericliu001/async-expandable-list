@@ -1,9 +1,5 @@
 package com.ericliu.asyncexpandablelistsample;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -20,6 +16,10 @@ import com.ericliu.asyncexpandablelist.async.AsyncExpandableCollectionView;
 import com.ericliu.asyncexpandablelist.async.AsyncExpandableCollectionViewCallbacks;
 import com.ericliu.asyncexpandablelist.async.AsyncHeaderViewHolder;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AsyncActivity extends Activity implements AsyncExpandableCollectionViewCallbacks<String, News> {
 
@@ -34,7 +34,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableCollection
         mAsyncExpandableCollectionView = (AsyncExpandableCollectionView) findViewById(R.id.asyncExpandableCollectionView);
         mAsyncExpandableCollectionView.setCallbacks(this);
 
-        inventory = new CollectionView.Inventory();
+        inventory = mAsyncExpandableCollectionView.getInventory();
 
         CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
         group1.setHeaderItem("Top Stories");
@@ -56,7 +56,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableCollection
         CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6); // 2 is smaller than 10, displayed second
         group6.setHeaderItem("Technology");
 
-        mAsyncExpandableCollectionView.updateInventory(inventory);
+        mAsyncExpandableCollectionView.updateInventory();
     }
 
     @Override

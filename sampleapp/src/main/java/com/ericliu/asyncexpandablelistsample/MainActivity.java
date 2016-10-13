@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements CollectionViewCallbacks<St
         mCollectionView = (CollectionView) findViewById(R.id.collectionView);
 
 
-        inventory = new CollectionView.Inventory();
+        inventory = mCollectionView.getInventory();
 
         CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
         News news;
@@ -113,7 +113,7 @@ public class MainActivity extends Activity implements CollectionViewCallbacks<St
         group3.addItem(news);
 
         mCollectionView.setCollectionCallbacks(this);
-        mCollectionView.updateInventory(inventory);
+        mCollectionView.updateInventory();
 
     }
 
