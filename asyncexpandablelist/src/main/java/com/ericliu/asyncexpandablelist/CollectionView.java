@@ -344,7 +344,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
         }
 
 
-        public Inventory(Inventory copyFrom) {
+        private Inventory(Inventory copyFrom) {
             mGroups = copyFrom.mGroups.clone();
         }
 
