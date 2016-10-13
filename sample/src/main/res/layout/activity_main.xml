@@ -21,13 +21,13 @@
       android:background="@color/grey_background"
       android:id="@+id/sample_main_layout">
 
-    <com.ericliu.asyncexpandablelist.widget.CollectionView
+    <com.ericliu.asyncexpandablelist.CollectionView
         android:id="@+id/collectionView"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.ericliu.asyncexpandablelist.widget.CollectionView>
+    </com.ericliu.asyncexpandablelist.CollectionView>
 
 
 </LinearLayout>

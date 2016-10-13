@@ -9,10 +9,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ericliu.asyncexpandablelist.ui.AsyncActivity">
+    tools:context="com.ericliu.asyncexpandablelistsample.AsyncActivity">
 
 
-    <com.ericliu.asyncexpandablelist.widget.async.AsyncExpandableCollectionView
+    <com.ericliu.asyncexpandablelist.async.AsyncExpandableCollectionView
         android:id="@+id/asyncExpandableCollectionView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

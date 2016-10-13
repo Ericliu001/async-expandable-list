@@ -1,4 +1,4 @@
-package com.ericliu.asyncexpandablelist.ui;
+package com.ericliu.asyncexpandablelistsample;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -15,7 +15,11 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.ericliu.asyncexpandablelist.R;
+import com.ericliu.asyncexpandablelist.CollectionView;
+import com.ericliu.asyncexpandablelist.async.AsyncExpandableCollectionView;
+import com.ericliu.asyncexpandablelist.async.AsyncExpandableCollectionViewCallbacks;
+import com.ericliu.asyncexpandablelist.async.AsyncHeaderViewHolder;
+
 
 public class AsyncActivity extends Activity implements AsyncExpandableCollectionViewCallbacks<String, News> {
 

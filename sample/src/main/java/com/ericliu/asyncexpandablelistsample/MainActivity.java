@@ -1,4 +1,4 @@
-/*
+package com.ericliu.asyncexpandablelistsample;/*
 * Copyright 2013 The Android Open Source Project
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,6 @@
 */
 
 
-package com.ericliu.asyncexpandablelist.ui;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +29,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.collectionview.R;
+import com.ericliu.asyncexpandablelist.CollectionView;
+import com.ericliu.asyncexpandablelist.CollectionViewCallbacks;
 
 
 /**

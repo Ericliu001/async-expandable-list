@@ -1,4 +1,4 @@
-package com.ericliu.asyncexpandablelist.ui;
+package com.ericliu.asyncexpandablelistsample;
 
 /**
  * Created by ericliu on 12/10/16.

@@ -1,1 +1,1 @@
-include ':asyncexpandablelist'
+include ':asyncexpandablelist', ':sample'
