@@ -12,7 +12,7 @@
     tools:context="com.ericliu.asyncexpandablelistsample.AsyncActivity">
 
 
-    <com.ericliu.asyncexpandablelist.async.AsyncExpandableCollectionView
+    <com.ericliu.asyncexpandablelist.async.AsyncExpandableListView
         android:id="@+id/asyncExpandableCollectionView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

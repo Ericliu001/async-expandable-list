@@ -14,22 +14,22 @@ import com.ericliu.asyncexpandablelist.CollectionView;
  * Created by ericliu on 6/10/2016.
  */
 
-public class AsyncExpandableCollectionView<T1, T2> extends CollectionView<T1, T2> {
+public class AsyncExpandableListView<T1, T2> extends CollectionView<T1, T2> {
 
-    private AsyncExpandableCollectionViewCallbacks<T1, T2> mCallbacks;
+    private AsyncExpandableListViewCallbacks<T1, T2> mCallbacks;
     protected WeakHashMap<OnGroupStateChangeListener, Integer> mOnGroupStateChangeListeners = new WeakHashMap<>();
     protected int expandedGroupOrdinal = -1;
 
 
-    public AsyncExpandableCollectionView(Context context) {
+    public AsyncExpandableListView(Context context) {
         super(context);
     }
 
-    public AsyncExpandableCollectionView(Context context, AttributeSet attrs) {
+    public AsyncExpandableListView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public AsyncExpandableCollectionView(Context context, AttributeSet attrs, int defStyle) {
+    public AsyncExpandableListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -64,7 +64,7 @@ public class AsyncExpandableCollectionView<T1, T2> extends CollectionView<T1, T2
     }
 
 
-    public void setCallbacks(AsyncExpandableCollectionViewCallbacks<T1, T2> callbacks) {
+    public void setCallbacks(AsyncExpandableListViewCallbacks<T1, T2> callbacks) {
         setCollectionCallbacks(callbacks);
         mCallbacks = callbacks;
     }

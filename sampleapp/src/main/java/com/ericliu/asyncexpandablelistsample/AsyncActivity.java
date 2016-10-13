@@ -12,8 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ericliu.asyncexpandablelist.CollectionView;
-import com.ericliu.asyncexpandablelist.async.AsyncExpandableCollectionView;
-import com.ericliu.asyncexpandablelist.async.AsyncExpandableCollectionViewCallbacks;
+import com.ericliu.asyncexpandablelist.async.AsyncExpandableListView;
+import com.ericliu.asyncexpandablelist.async.AsyncExpandableListViewCallbacks;
 import com.ericliu.asyncexpandablelist.async.AsyncHeaderViewHolder;
 
 import java.lang.ref.WeakReference;
@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AsyncActivity extends Activity implements AsyncExpandableCollectionViewCallbacks<String, News> {
+public class AsyncActivity extends Activity implements AsyncExpandableListViewCallbacks<String, News> {
 
-    private AsyncExpandableCollectionView<String, News> mAsyncExpandableCollectionView;
+    private AsyncExpandableListView<String, News> mAsyncExpandableListView;
     private CollectionView.Inventory<String, News> inventory;
     private OnLoadDataListener onLoadDataListener;
 
@@ -31,10 +31,10 @@ public class AsyncActivity extends Activity implements AsyncExpandableCollection
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_async);
-        mAsyncExpandableCollectionView = (AsyncExpandableCollectionView) findViewById(R.id.asyncExpandableCollectionView);
-        mAsyncExpandableCollectionView.setCallbacks(this);
+        mAsyncExpandableListView = (AsyncExpandableListView) findViewById(R.id.asyncExpandableCollectionView);
+        mAsyncExpandableListView.setCallbacks(this);
 
-        inventory = mAsyncExpandableCollectionView.getInventory();
+        inventory = mAsyncExpandableListView.getInventory();
 
         CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
         group1.setHeaderItem("Top Stories");
@@ -56,7 +56,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableCollection
         CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6); // 2 is smaller than 10, displayed second
         group6.setHeaderItem("Technology");
 
-        mAsyncExpandableCollectionView.updateInventory();
+        mAsyncExpandableListView.updateInventory();
     }
 
     @Override
@@ -74,7 +74,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableCollection
         }
 
         public void onFinishLoadingGroup(List<News> items) {
-            mAsyncExpandableCollectionView.onFinishLoadingGroup(mGroupOrdinal,items);
+            mAsyncExpandableListView.onFinishLoadingGroup(mGroupOrdinal,items);
         }
 
     }
@@ -125,7 +125,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableCollection
         View v = LayoutInflater.from(context)
                 .inflate(R.layout.header_row_item_async, parent, false);
 
-        return new MyHeaderViewHolder(v, groupOrdinal, mAsyncExpandableCollectionView);
+        return new MyHeaderViewHolder(v, groupOrdinal, mAsyncExpandableListView);
     }
 
     @Override
@@ -150,13 +150,13 @@ public class AsyncActivity extends Activity implements AsyncExpandableCollection
         newsItemHolder.getTextViewDescrption().setText(item.getNewsBody());
     }
 
-    public static class MyHeaderViewHolder extends AsyncHeaderViewHolder implements AsyncExpandableCollectionView.OnGroupStateChangeListener {
+    public static class MyHeaderViewHolder extends AsyncHeaderViewHolder implements AsyncExpandableListView.OnGroupStateChangeListener {
 
         private final TextView textView;
         private final ProgressBar mProgressBar;
 
-        public MyHeaderViewHolder(View v, int groupOrdinal, AsyncExpandableCollectionView asyncExpandableCollectionView) {
-            super(v, groupOrdinal, asyncExpandableCollectionView);
+        public MyHeaderViewHolder(View v, int groupOrdinal, AsyncExpandableListView asyncExpandableListView) {
+            super(v, groupOrdinal, asyncExpandableListView);
             textView = (TextView) v.findViewById(R.id.title);
             mProgressBar = (ProgressBar) v.findViewById(R.id.progressBar);
             mProgressBar.getIndeterminateDrawable().setColorFilter(0xFFFFFFFF,

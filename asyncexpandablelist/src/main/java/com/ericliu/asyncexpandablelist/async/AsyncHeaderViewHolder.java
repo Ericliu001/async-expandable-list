@@ -7,18 +7,18 @@ import android.view.View;
  * Created by ericliu on 12/10/16.
  */
 
-public abstract class AsyncHeaderViewHolder extends RecyclerView.ViewHolder implements AsyncExpandableCollectionView.OnGroupStateChangeListener {
+public abstract class AsyncHeaderViewHolder extends RecyclerView.ViewHolder implements AsyncExpandableListView.OnGroupStateChangeListener {
     private final int mGroupOrdinal;
-    private final AsyncExpandableCollectionView mAsyncExpandableCollectionView;
+    private final AsyncExpandableListView mAsyncExpandableListView;
 
-    public AsyncHeaderViewHolder(View itemView, int groupOrdinal, AsyncExpandableCollectionView asyncExpandableCollectionView) {
+    public AsyncHeaderViewHolder(View itemView, int groupOrdinal, AsyncExpandableListView asyncExpandableListView) {
         super(itemView);
         mGroupOrdinal = groupOrdinal;
-        mAsyncExpandableCollectionView = asyncExpandableCollectionView;
+        mAsyncExpandableListView = asyncExpandableListView;
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAsyncExpandableCollectionView.onGroupClicked(mGroupOrdinal);
+                mAsyncExpandableListView.onGroupClicked(mGroupOrdinal);
                 onItemClick(v);
             }
         });
