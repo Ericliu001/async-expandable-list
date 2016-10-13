@@ -113,7 +113,7 @@ public class MainActivity extends Activity implements CollectionViewCallbacks<St
         group3.addItem(news);
 
         mCollectionView.setCollectionCallbacks(this);
-        mCollectionView.updateInventory();
+        mCollectionView.notifyDataSetChanged();
 
     }
 

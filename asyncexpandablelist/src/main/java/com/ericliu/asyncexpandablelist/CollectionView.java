@@ -1,5 +1,8 @@
 package com.ericliu.asyncexpandablelist;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +11,6 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Eric Liu on 18/01/2016.
@@ -21,7 +21,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
     private static final int VIEW_TYPE_NON_HEADER = 10;
     protected final LinearLayoutManager mLinearLayoutManager;
 
-    final protected Inventory<T1, T2> mInventory = new Inventory();
+    protected Inventory<T1, T2> mInventory = new Inventory();
     private CollectionViewCallbacks<T1, T2> mCallbacks = null;
     private MyListAdapter mAdapter = null;
 
@@ -58,7 +58,12 @@ public class CollectionView<T1, T2> extends RecyclerView {
         mInventory.mGroups.clear();
     }
 
-    public void updateInventory() {
+    public void notifyDataSetChanged(final Inventory<T1, T2> inventory) {
+        mInventory = new Inventory<T1, T2>(inventory);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    public void notifyDataSetChanged() {
         mAdapter.notifyDataSetChanged();
     }
 
@@ -333,6 +338,10 @@ public class CollectionView<T1, T2> extends RecyclerView {
 
 
         private Inventory() {
+        }
+
+        private Inventory(Inventory copyFrom) {
+            mGroups = copyFrom.mGroups.clone();
         }
 
         private void addGroup(InventoryGroup<T1, T2> group) {
