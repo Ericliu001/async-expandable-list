@@ -54,7 +54,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
         return mInventory;
     }
 
-    public void resetInventory(){
+    public void clearInventory(){
         mInventory.mGroups.clear();
     }
 
