@@ -278,7 +278,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
 
         private ArrayList<T2> mItems = new ArrayList<>();
 
-        public InventoryGroup(int oridinal) {
+        private InventoryGroup(int oridinal) {
             mOrdinal = oridinal;
         }
 
