@@ -345,6 +345,10 @@ public class CollectionView<T1, T2> extends RecyclerView {
             return group;
         }
 
+        public InventoryGroup<T1, T2> updateGroup(int groupOrdinal) {
+            return newGroup(groupOrdinal);
+        }
+
 
         private InventoryGroup findGroup(int groupOrdinal) {
             return mGroups.get(groupOrdinal);
