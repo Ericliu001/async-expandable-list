@@ -16,7 +16,11 @@
 -->
 
 <resources>
+    <string name="app_name">AsyncExpandableList</string>
+
     <string name="element_text">Element</string>
     <string name="grid_layout_manager">Grid Layout Manager</string>
     <string name="linear_layout_manager">Linear Layout Manager</string>
+    <string name="activity_main">CollectionView</string>
+    <string name="activity_async">AsyncExpandableCollectionView</string>
 </resources>
