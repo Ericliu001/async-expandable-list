@@ -45,12 +45,12 @@ public class CollectionView<T1, T2> extends RecyclerView {
     }
 
 
-    public void setCollectionCallbacks(CollectionViewCallbacks<T1,T2> adapter) {
+    public void setCollectionCallbacks(CollectionViewCallbacks<T1, T2> adapter) {
         mCallbacks = adapter;
     }
 
 
-    public Inventory<T1, T2> getInventory(){
+    public Inventory<T1, T2> getInventory() {
         return mInventory;
     }
 
@@ -97,7 +97,9 @@ public class CollectionView<T1, T2> extends RecyclerView {
     }
 
 
-    protected class MyListAdapter extends Adapter {
+    private final class MyListAdapter extends Adapter {
+        private MyListAdapter() {
+        }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -268,27 +270,18 @@ public class CollectionView<T1, T2> extends RecyclerView {
     /**
      * Represents a group of items with a header to be displayed in the {@link CollectionView}.
      */
-    public static class InventoryGroup<T1, T2> {
+    public final static class InventoryGroup<T1, T2> {
 
-        private int mOrdinal = 0;
-
+        final private int mOrdinal;
 
         private T1 mHeaderItem;
-        private int mDataIndexStart = 0;
-
         private ArrayList<T2> mItems = new ArrayList<>();
+
 
         private InventoryGroup(int oridinal) {
             mOrdinal = oridinal;
         }
 
-
-        private InventoryGroup(InventoryGroup<T1, T2> copyFrom) {
-            mOrdinal = copyFrom.mOrdinal;
-            mHeaderItem = copyFrom.mHeaderItem;
-            mDataIndexStart = copyFrom.mDataIndexStart;
-            mItems = (ArrayList<T2>) copyFrom.mItems.clone();
-        }
 
         public int getOrdinal() {
             return mOrdinal;
@@ -303,18 +296,13 @@ public class CollectionView<T1, T2> extends RecyclerView {
             return this;
         }
 
-        public InventoryGroup<T1, T2> setDataIndexStart(int dataIndexStart) {
-            mDataIndexStart = dataIndexStart;
-            return this;
-        }
-
 
         public void addItem(T2 item) {
             mItems.add(item);
         }
 
 
-        int getRowCount() {
+        public int getRowCount() {
             return 1 + mItems.size();
         }
 
@@ -323,7 +311,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
             return mItems.get(index);
         }
 
-        void addItems(List<? extends T2> items) {
+        public void addItems(List<? extends T2> items) {
             mItems.addAll(items);
         }
 
@@ -336,16 +324,11 @@ public class CollectionView<T1, T2> extends RecyclerView {
      * This is defined as a list of {@link InventoryGroup} which represents a group of items with a
      * header.
      */
-    public static class Inventory<T1, T2> {
+    public final static class Inventory<T1, T2> {
         private SparseArray<InventoryGroup<T1, T2>> mGroups = new SparseArray<>();
 
 
         private Inventory() {
-        }
-
-
-        private Inventory(Inventory copyFrom) {
-            mGroups = copyFrom.mGroups.clone();
         }
 
         private void addGroup(InventoryGroup<T1, T2> group) {
@@ -374,11 +357,11 @@ public class CollectionView<T1, T2> extends RecyclerView {
             return total;
         }
 
-        int getGroupCount() {
+        public int getGroupCount() {
             return mGroups.size();
         }
 
-        int getGroupIndex(int groupOrdinal) {
+        public int getGroupIndex(int groupOrdinal) {
             for (int i = 0; i < mGroups.size(); i++) {
                 int key = mGroups.keyAt(i);
                 if (mGroups.get(key).mOrdinal == groupOrdinal) {
