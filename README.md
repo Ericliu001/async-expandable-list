@@ -7,7 +7,7 @@ async-expandable-list contains 2 View classes: CollectionView and AsynExpandable
 
 Introduction
 -------------------
-CollectionView handles display of a list in header-items struture:
+CollectionView handles displaying of a list in header-items struture:
    * Header A
        * item a1
        * item a2
@@ -21,7 +21,7 @@ CollectionView handles display of a list in header-items struture:
        * item c3
        
        
-AsyncExpandableListView displays a list of headers and loads a sub-list under a header when a header item is clicked.
+AsyncExpandableListView displays a list of headers and loads a sub-list under a header when a header item is clicked. The loading of sub-items can be done asynchronously and there are callback to populate the data into the list when it's done loading. 
 
  
  1. CollectionView in 3 steps
