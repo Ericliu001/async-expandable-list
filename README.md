@@ -89,9 +89,10 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   ```
   All done, the list will display the exact header-items structure. 
   
-   2. AsyncExpandableListView in 3 steps
+2. AsyncExpandableListView in 3 steps
 -------------------
-1. add AsyncExpandableListView to layout.xml file where you want to display the expandable list. (Optional, population the AsyncExpandableListView class in java has the same result)
+ 
+1. add AsyncExpandableListView to layout.xml file where you want to display the expandable list. (Optional, population the AsyncExpandableListView class in java has the same result).
 ```xml
 <com.ericliu.asyncexpandablelist.async.AsyncExpandableListView
         android:id="@+id/asyncExpandableCollectionView"
@@ -129,3 +130,4 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
 
 ```
 
+3. Handle the async calls
