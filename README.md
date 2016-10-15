@@ -64,13 +64,12 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
     
     
   ```java
-  int groupOrdinal = 0; // groupOrdinal dictates the sequence of groups to be displayed in the list
-  CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(groupOrdinal); 
+        int groupOrdinal = 0; // groupOrdinal dictates the sequence of groups to be displayed in the list
+        CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(groupOrdinal); 
         
         // creating objects to be populated into the list.
         News news1 = new News();
-        news.setNewsTitle("Australian Police Arrest 2 Sydney Teens, Seize Knives");
-        news.setNewsBody("SYDNEY - Australian police arreste....... killed 202, including 88 Australians, police said.");  
+        ...  
         News news2 = new News(); ......
         .......
         
