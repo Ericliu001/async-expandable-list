@@ -36,4 +36,39 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
 ```
 
 2. Pouplating data
-  * 
+  * find the view instance and get a CollectionView.Inventory from the view.
+    The Inventory instance represent all the whole data structure that's gonna be populated into the list.
+  
+  ```java
+  private CollectionView<String, News> mCollectionView;
+    private CollectionView.Inventory<String, News> inventory;
+    private boolean flag;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mCollectionView = (CollectionView) findViewById(R.id.collectionView);
+        
+        // the inventory represent all the whole data structure that's gonna be populated into the list.
+        inventory = mCollectionView.getInventory();
+
+  ```
+  * Create InventoryGroup intances and add header item and sub-items into the InventoryGroup instance.
+    An InventoryGroup represents a header item and all sub-items under that header in the list.
+    
+    
+  ```java
+  CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
+        News news;
+
+        group1.setHeaderItem("Top Stories");
+        news = new News();
+        news.setNewsTitle("Australian Police Arrest 2 Sydney Teens, Seize Knives");
+        news.setNewsBody("SYDNEY - Australian police arreste....... killed 202, including 88 Australians, police said.");
+        group1.addItem(news);
+  
+  ```
+  
+  
