@@ -84,7 +84,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   ```java
    mCollectionView.updateInventory(inventory);
   ```
-  
+  All done, the list will display the exact header-items structure. 
   
    2. AsyncExpandableListView in 3 steps
 -------------------
