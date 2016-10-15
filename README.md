@@ -142,20 +142,20 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
         group1.setHeaderItem("Top Stories");
 
 
-        CollectionView.InventoryGroup<String, News> group2 = inventory.newGroup(2);
+        CollectionView.InventoryGroup<String, News> group2 = inventory.newGroup(2); // 2 is the second smallest ordinal, displayed second
         group2.setHeaderItem("World");
 
 
-        CollectionView.InventoryGroup<String, News> group3 = inventory.newGroup(3); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group3 = inventory.newGroup(3);
         group3.setHeaderItem("Australia");
 
-        CollectionView.InventoryGroup<String, News> group4 = inventory.newGroup(4); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group4 = inventory.newGroup(4); 
         group4.setHeaderItem("International");
 
-        CollectionView.InventoryGroup<String, News> group5 = inventory.newGroup(5); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group5 = inventory.newGroup(5); 
         group5.setHeaderItem("Businesses");
 
-        CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6); 
         group6.setHeaderItem("Technology");
 
         mAsyncExpandableListView.updateInventory(inventory);
@@ -175,3 +175,9 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   ```java
     mAsyncExpandableListView.onFinishLoadingGroup(mGroupOrdinal, items);
   ```
+
+References:
+-------------------
+Inspired by CollectionView in Google iosche
+
+https://github.com/google/iosched/blob/master/android/src/main/java/com/google/samples/apps/iosched/ui/widget/CollectionView.java
