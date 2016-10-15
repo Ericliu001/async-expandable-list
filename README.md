@@ -24,7 +24,7 @@ CollectionView handles display of a list in header-items struture:
 AsyncExpandableListView displays a list of headers and loads a sub-list under a header when a header item is clicked.
 
  
- CollectionView in 3 steps
+ 1. CollectionView in 3 steps
 -------------------
 1. Add the CollectionView to the layout.xml file where you want to display the list (Optional, population the CollectionView class in java has the same result)
 ```xml
@@ -86,3 +86,5 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   ```
   
   
+   2. AsyncExpandableListView in 3 steps
+-------------------
