@@ -80,6 +80,9 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   
   ```
   
-  * 
+  * Call updateInventory() to display the data structure we just created
+  ```java
+   mCollectionView.updateInventory(inventory);
+  ```
   
   
