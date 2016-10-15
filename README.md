@@ -5,6 +5,21 @@ async-expandable-list contains 2 View classes: CollectionView and AsynExpandable
 
 ![Demo](https://cloud.githubusercontent.com/assets/3691022/19348717/0d6c98ec-919b-11e6-97c3-a8ff782a059b.gif)  ![Demo](https://cloud.githubusercontent.com/assets/3691022/19406879/cb982648-92da-11e6-86bf-7c82e8505e6c.gif)
 
+Add async-expandable-list to your project
+----------------------------
+Gradle:
+```gradle
+compile 'com.ericliu.asyncexpandablelist:asyncexpandablelist:1.0.7'
+```
+Please make sure you have jcenter() in your project's repository. Check build.gradle file under the project's root directory. Add the following lines if they are missing. 
+```gradle
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+```
+
 Introduction
 -------------------
 CollectionView displays a list of headers and sub-items:
