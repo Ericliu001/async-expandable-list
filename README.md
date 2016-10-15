@@ -118,7 +118,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   ```
   
   
-  * In particular the ```java void onStartLoadingGroup(int groupOrdinal); ``` method in the AsyncExpandableListViewCallbacks will be triggered on the header item click events, which gives the client a changes to trigger loading sub-item data calls here. When the call comes back, the client should call the method ```java onFinishLoadingGroup(mGroupOrdinal, items);``` on the AsyncExpandableListView instance to display the data as well as updating UI.
+  * In particular the ``` void onStartLoadingGroup(int groupOrdinal); ``` method in the AsyncExpandableListViewCallbacks will be triggered on the header item click events, which gives the client a changes to trigger loading sub-item data calls here. When the call comes back, the client should call the method ``` onFinishLoadingGroup(mGroupOrdinal, items);``` on the AsyncExpandableListView instance to display the data as well as updating UI.
   * The steps to add groups is the same as CollectionView mentioned above, but we don't need to add sub-items to groups at this step, as the code snippet showed below:
 ```java
  inventory = CollectionView.Inventory.newInstance();
@@ -156,7 +156,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
         new LoadDataTask(groupOrdinal, mAsyncExpandableListView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
     ```
-  * When the data come back, call ```java onFinishLoadingGroup(mGroupOrdinal, items); ``` to display data. 
+  * When the data come back, call ``` onFinishLoadingGroup(mGroupOrdinal, items); ``` to display data. 
   ```java
     mAsyncExpandableListView.onFinishLoadingGroup(mGroupOrdinal, items);
   ```
