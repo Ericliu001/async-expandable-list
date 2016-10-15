@@ -55,7 +55,7 @@ public class MainActivity extends Activity implements CollectionViewCallbacks<St
         setContentView(R.layout.activity_main);
 
         mCollectionView = (CollectionView) findViewById(R.id.collectionView);
-
+        mCollectionView.setCollectionCallbacks(this);
 
         inventory = mCollectionView.getInventory();
 
@@ -112,8 +112,8 @@ public class MainActivity extends Activity implements CollectionViewCallbacks<St
         news.setNewsBody("A voluntary target for the amount of pro bono work done by Australian lawyers has been met for the first time since 2013. Key points: The Australian Pro Bono Centre's asks lawyers to do 35 hours of free community work a year; Pro bono services can help ...\n");
         group3.addItem(news);
 
-        mCollectionView.setCollectionCallbacks(this);
-        mCollectionView.notifyDataSetChanged();
+
+        mCollectionView.updateInventory(inventory);
 
     }
 

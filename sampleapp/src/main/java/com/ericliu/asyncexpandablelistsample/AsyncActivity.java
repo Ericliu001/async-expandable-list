@@ -26,7 +26,6 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
 
     private AsyncExpandableListView<String, News> mAsyncExpandableListView;
     private CollectionView.Inventory<String, News> inventory;
-    private OnLoadDataListener onLoadDataListener;
 
 
     @Override
@@ -63,31 +62,20 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
 
     @Override
     public void onStartLoadingGroup(int groupOrdinal) {
-        onLoadDataListener = new OnLoadDataListener(groupOrdinal);
-        new LoadDataTask(onLoadDataListener).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        new LoadDataTask(groupOrdinal, mAsyncExpandableListView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
-    final class OnLoadDataListener {
-        private int mGroupOrdinal;
 
-        public OnLoadDataListener(int groupOrdinal) {
-
-            mGroupOrdinal = groupOrdinal;
-        }
-
-        public void onFinishLoadingGroup(List<News> items) {
-            mAsyncExpandableListView.onFinishLoadingGroup(mGroupOrdinal,items);
-        }
-
-    }
 
 
     private static class LoadDataTask extends AsyncTask<Void, Void, Void> {
 
-        private WeakReference<AsyncActivity.OnLoadDataListener> mOnLoadDataListenerRef = null;
+        private final int mGroupOrdinal;
+        private WeakReference<AsyncExpandableListView<String, News>> listviewRef = null;
 
-        public LoadDataTask(AsyncActivity.OnLoadDataListener onLoadDataListener) {
-            mOnLoadDataListenerRef = new WeakReference<>(onLoadDataListener);
+        public LoadDataTask(int groupOrdinal, AsyncExpandableListView<String, News> listview) {
+            mGroupOrdinal = groupOrdinal;
+            listviewRef = new WeakReference<>(listview);
         }
 
         @Override
@@ -114,8 +102,8 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
             news.setNewsBody("More than 77,000 NSW high school students will sit their first HSC exams this week as one of the final cohorts to sit the test before the NSW government enacts sweeping reforms across the state.");
             items.add(news);
 
-            if (mOnLoadDataListenerRef.get() != null) {
-                mOnLoadDataListenerRef.get().onFinishLoadingGroup(items);
+            if (listviewRef.get() != null) {
+                listviewRef.get().onFinishLoadingGroup(mGroupOrdinal, items);
             }
         }
 
