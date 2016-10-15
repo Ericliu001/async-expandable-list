@@ -38,6 +38,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
 2. Pouplating data
   * find the view instance and get a CollectionView.Inventory from the view.
     The Inventory instance represent all the whole data structure that's gonna be populated into the list.
+    Call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and bind data into the ViewHoders.
   
   ```java
   private CollectionView<String, News> mCollectionView;
@@ -50,6 +51,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
         setContentView(R.layout.activity_main);
 
         mCollectionView = (CollectionView) findViewById(R.id.collectionView);
+        mCollectionView.setCollectionCallbacks(this);
         
         // the inventory represent all the whole data structure that's gonna be populated into the list.
         inventory = mCollectionView.getInventory();
@@ -63,10 +65,10 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
         
         // creating objects to be populated into the list.
-        
         News news1 = new News();
         news.setNewsTitle("Australian Police Arrest 2 Sydney Teens, Seize Knives");
         news.setNewsBody("SYDNEY - Australian police arreste....... killed 202, including 88 Australians, police said.");  
+        
         
         // set the header item, in this case, it is simply a String.
         group1.setHeaderItem("Top Stories");
@@ -77,5 +79,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
           ....
   
   ```
+  
+  * 
   
   
