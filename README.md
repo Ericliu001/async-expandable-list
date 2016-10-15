@@ -36,14 +36,14 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
 ```
 
 2. Pouplating data
-  * find the view instance and get a CollectionView.Inventory from the view.
-    The Inventory instance represent all the whole data structure that's gonna be populated into the list.
-    Call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and bind data into the ViewHoders.
+  * find the view instance and call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and bind data into the ViewHoders.
+    Get a CollectionView.Inventory instance from the view, the Inventory instance represents the whole data structure that's gonna be populated into the list.
+    
   
   ```java
-  private CollectionView<String, News> mCollectionView;
+ public class MainActivity extends Activity implements CollectionViewCallbacks<String, News> {
+    private CollectionView<String, News> mCollectionView;
     private CollectionView.Inventory<String, News> inventory;
-    private boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
