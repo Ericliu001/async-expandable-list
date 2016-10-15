@@ -59,7 +59,10 @@ public class MainActivity extends Activity implements CollectionViewCallbacks<St
 
         inventory = CollectionView.Inventory.newInstance();
 
-        CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
+        // groupOrdinal dictates the sequence of groups to be displayed in the list,
+        // the groups will be displayed in an ascending order on groupOrdinal
+        int groupOrdinal = 0;
+        CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(groupOrdinal);
         News news;
 
         group1.setHeaderItem("Top Stories");
