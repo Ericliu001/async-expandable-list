@@ -7,7 +7,7 @@ async-expandable-list contains 2 View classes: CollectionView and AsynExpandable
 
 Introduction
 -------------------
-CollectionView handles displaying a list of headers and sub-items:
+CollectionView displays a list of headers and sub-items:
    * Header A
        * item a1
        * item a2
