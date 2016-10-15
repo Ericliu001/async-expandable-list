@@ -61,13 +61,20 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
     
   ```java
   CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
-        News news;
-
-        group1.setHeaderItem("Top Stories");
-        news = new News();
+        
+        // creating objects to be populated into the list.
+        
+        News news1 = new News();
         news.setNewsTitle("Australian Police Arrest 2 Sydney Teens, Seize Knives");
-        news.setNewsBody("SYDNEY - Australian police arreste....... killed 202, including 88 Australians, police said.");
-        group1.addItem(news);
+        news.setNewsBody("SYDNEY - Australian police arreste....... killed 202, including 88 Australians, police said.");  
+        
+        // set the header item, in this case, it is simply a String.
+        group1.setHeaderItem("Top Stories");
+        // add items under this header.
+        group1.addItem(news1);
+        group1.addItem(news2);
+        group1.addItem(news3);
+          ....
   
   ```
   
