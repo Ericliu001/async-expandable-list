@@ -36,7 +36,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
 ```
 
 2. Pouplating data
-  * find the view instance and call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and bind data into the ViewHoders - works the same as the RecyclerView.Adapter except that you don't have to worry about view types.
+  * find the CollectionView instance and call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and bind data into the ViewHoders - works the same as the RecyclerView.Adapter except that you don't have to worry about view types.
   * Create a CollectionView.Inventory instance, the Inventory instance represents the whole data structure that's gonna be populated into the list.
     
   
@@ -91,3 +91,41 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   
    2. AsyncExpandableListView in 3 steps
 -------------------
+1. add AsyncExpandableListView to layout.xml file where you want to display the expandable list. (Optional, population the AsyncExpandableListView class in java has the same result)
+```xml
+<com.ericliu.asyncexpandablelist.async.AsyncExpandableListView
+        android:id="@+id/asyncExpandableCollectionView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+```
+2. Populating data
+* find the AsyncExpandableListView and call setCallbacks() and supply an AsyncExpandableListViewCallbacks instance to the view. The callbacks will handle the creation of ViewHolders and binding data to the ViewHolders. 
+* In particular the ```java void onStartLoadingGroup(int groupOrdinal); ``` method in the AsyncExpandableListViewCallbacks will be triggered on the header item click events, which gives the client a changes to trigger loading sub-item data calls here. When the call comes back, the client should call the method ```java onFinishLoadingGroup(mGroupOrdinal, items);``` on the AsyncExpandableListView instance to display the data as well as updating UI.
+* The steps to add groups is the same as CollectionView mentioned above, but we don't need to add sub-items to groups at this step, as the code snippet showed below:
+```java
+ inventory = CollectionView.Inventory.newInstance();
+
+        CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
+        group1.setHeaderItem("Top Stories");
+
+
+        CollectionView.InventoryGroup<String, News> group2 = inventory.newGroup(2);
+        group2.setHeaderItem("World");
+
+
+        CollectionView.InventoryGroup<String, News> group3 = inventory.newGroup(3); // 2 is smaller than 10, displayed second
+        group3.setHeaderItem("Australia");
+
+        CollectionView.InventoryGroup<String, News> group4 = inventory.newGroup(4); // 2 is smaller than 10, displayed second
+        group4.setHeaderItem("International");
+
+        CollectionView.InventoryGroup<String, News> group5 = inventory.newGroup(5); // 2 is smaller than 10, displayed second
+        group5.setHeaderItem("Businesses");
+
+        CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6); // 2 is smaller than 10, displayed second
+        group6.setHeaderItem("Technology");
+
+        mAsyncExpandableListView.updateInventory(inventory);
+
+```
+
