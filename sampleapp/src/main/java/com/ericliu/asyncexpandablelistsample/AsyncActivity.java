@@ -1,9 +1,5 @@
 package com.ericliu.asyncexpandablelistsample;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -12,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -20,12 +17,17 @@ import com.ericliu.asyncexpandablelist.async.AsyncExpandableListView;
 import com.ericliu.asyncexpandablelist.async.AsyncExpandableListViewCallbacks;
 import com.ericliu.asyncexpandablelist.async.AsyncHeaderViewHolder;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AsyncActivity extends Activity implements AsyncExpandableListViewCallbacks<String, News> {
 
     private AsyncExpandableListView<String, News> mAsyncExpandableListView;
     private CollectionView.Inventory<String, News> inventory;
     private OnLoadDataListener onLoadDataListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +156,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
 
         private final TextView textView;
         private final ProgressBar mProgressBar;
+        private ImageView ivExpansionIndicator;
 
         public MyHeaderViewHolder(View v, int groupOrdinal, AsyncExpandableListView asyncExpandableListView) {
             super(v, groupOrdinal, asyncExpandableListView);
@@ -161,6 +164,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
             mProgressBar = (ProgressBar) v.findViewById(R.id.progressBar);
             mProgressBar.getIndeterminateDrawable().setColorFilter(0xFFFFFFFF,
                     android.graphics.PorterDuff.Mode.MULTIPLY);
+            ivExpansionIndicator = (ImageView) v.findViewById(R.id.ivExpansionIndicator);
         }
 
 
@@ -172,16 +176,22 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
         @Override
         public void onGroupStartExpending() {
             mProgressBar.setVisibility(View.VISIBLE);
+            ivExpansionIndicator.setVisibility(View.INVISIBLE);
         }
 
         @Override
         public void onGroupExpanded() {
             mProgressBar.setVisibility(View.GONE);
+            ivExpansionIndicator.setVisibility(View.VISIBLE);
+            ivExpansionIndicator.setImageResource(R.drawable.ic_arrow_up);
         }
 
         @Override
         public void onGroupCollapsed() {
             mProgressBar.setVisibility(View.GONE);
+            ivExpansionIndicator.setVisibility(View.VISIBLE);
+            ivExpansionIndicator.setImageResource(R.drawable.ic_arrow_down);
+
         }
     }
 }

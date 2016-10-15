@@ -22,5 +22,5 @@
     <string name="grid_layout_manager">Grid Layout Manager</string>
     <string name="linear_layout_manager">Linear Layout Manager</string>
     <string name="activity_main">CollectionView</string>
-    <string name="activity_async">AsyncExpandableCollectionView</string>
+    <string name="activity_async">AsyncExpandableListView</string>
 </resources>
