@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+version = "1.0.4"
 
 android {
     compileSdkVersion rootProject.compileSdk
@@ -29,30 +32,105 @@ dependencies {
 }
 
 
+def siteUrl = 'https://github.com/Ericliu001/async-expandable-list'	//Homepage URL of the library
+def gitUrl = 'https://github.com/Ericliu001/async-expandable-list.git'	//Git repository url
+def issueUrl = 'https://github.com/Ericliu001/async-expandable-list/issues'	//issue url of the library
+group = 'com.ericliu.asyncexpandablelist'	//
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'async-expandable-list'
 
-    publishedGroupId = 'com.ericliu.asyncexpandablelist'
-    libraryName = 'async-expandable-list'
-    artifact = 'asyncexpandablelist'
-    libraryDescription = 'Async loads'
-
-    siteUrl = 'https://github.com/Ericliu001/async-expandable-list'
-    gitUrl = 'https://github.com/Ericliu001/async-expandable-list.git'
-
-    libraryVersion = 'v1.0.1'
-
-    licenseName = 'The MIT License (MIT)'
-    licenseUrl = 'https://opensource.org/licenses/MIT'
-    allLicenses = ["MIT"]
-
-    developerId = 'ericliu001'
-    developerName = 'Eric Liu'
-    developerEmail = 'eric.liu.developer@gmail.com'
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'A custom recyclerview that handles expandable list and async loading'
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The MIT License (MIT)'
+                        url 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'ericliu001' //your user ID
+                        name 'Eric Liu' //your name
+                        email 'eric.liu.developer@gmail.com' //your email
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
 }
 
-// Place it at the end of the file
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+
+
+//ext {
+//    bintrayRepo = 'maven'
+//    bintrayName = 'async-expandable-list'
+//
+//    publishedGroupId = 'com.ericliu.asyncexpandablelist'
+//    libraryName = 'async-expandable-list'
+//    artifact = 'asyncexpandablelist'
+//    libraryDescription = 'Async loads'
+//
+//
+//    siteUrl = siteUrl
+//
+//    libraryVersion = '1.0.1'
+//
+//    licenseName = 'The MIT License (MIT)'
+//    licenseUrl = 'https://opensource.org/licenses/MIT'
+//    allLicenses = ["MIT"]
+//
+//    developerId = 'ericliu001'
+//    developerName = 'Eric Liu'
+//    developerEmail = 'eric.liu.developer@gmail.com'
+//}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+
+        repo = 'maven'	//Bintray repository
+        name = 'async-expandable-list'
+        desc = 'A custom recyclerview that handles expandable list and async loading'	//Project description
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        issueTrackerUrl = issueUrl
+        licenses = ["MIT"]
+        labels = ['android']	//标签
+        publish = true
+        publicDownloadNumbers = true
+    }
+}
