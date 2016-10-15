@@ -21,7 +21,7 @@ CollectionView handles displaying of a list in header-items struture:
        * item c3
        
        
-AsyncExpandableListView displays a list of headers and loads a sub-list under a header when a header item is clicked. The loading of sub-items can be done asynchronously and there are callback to populate the data into the list when it's done loading. 
+AsyncExpandableListView displays a list of headers and loads a sub-list under a header when a header item is clicked. The loading of sub-items can be done asynchronously and there are callbacks to populate the data into the list when it's done loading. 
 
  
  1. CollectionView in 3 steps
@@ -36,8 +36,8 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
 ```
 
 2. Pouplating data
-  * find the view instance and call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and bind data into the ViewHoders - works the same as the RecyclerView except that you don't have to worry about view types.
-    Create a CollectionView.Inventory instance, the Inventory instance represents the whole data structure that's gonna be populated into the list.
+  * find the view instance and call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and bind data into the ViewHoders - works the same as the RecyclerView.Adapter except that you don't have to worry about view types.
+  * Create a CollectionView.Inventory instance, the Inventory instance represents the whole data structure that's gonna be populated into the list.
     
   
   ```java
@@ -64,7 +64,8 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
     
     
   ```java
-  CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal dictates the sequence of groups in an ascending orider
+  int groupOrdinal = 0; // groupOrdinal dictates the sequence of groups to be displayed in the list
+  CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(groupOrdinal); 
         
         // creating objects to be populated into the list.
         News news1 = new News();
