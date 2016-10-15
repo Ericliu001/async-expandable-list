@@ -37,7 +37,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
 
 2. Pouplating data
   * find the view instance and call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and bind data into the ViewHoders.
-    Get a CollectionView.Inventory instance from the view, the Inventory instance represents the whole data structure that's gonna be populated into the list.
+    Create a CollectionView.Inventory instance, the Inventory instance represents the whole data structure that's gonna be populated into the list.
     
   
   ```java
@@ -58,11 +58,13 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
 
   ```
   * Create InventoryGroup intances and add header item and sub-items into the InventoryGroup instance.
+  Note the the newGroup(int groupOrdinal) method provided in the Inventory class requires an integer parameter: groupOrdinal.
+  All the groups will be displayed in the list in an ascending order on the groupOrdinal.
     An InventoryGroup represents a header item and all sub-items under that header in the list.
     
     
   ```java
-  CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
+  CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal dictates the sequence of groups in an ascending orider
         
         // creating objects to be populated into the list.
         News news1 = new News();
