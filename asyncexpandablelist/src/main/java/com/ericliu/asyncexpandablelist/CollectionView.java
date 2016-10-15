@@ -1,8 +1,5 @@
 package com.ericliu.asyncexpandablelist;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +8,9 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Eric Liu on 18/01/2016.
@@ -50,22 +50,13 @@ public class CollectionView<T1, T2> extends RecyclerView {
     }
 
 
-    public Inventory<T1, T2> getInventory() {
-        return mInventory;
-    }
 
-    public void clearInventory(){
-        mInventory.mGroups.clear();
-    }
 
     public void updateInventory(final Inventory<T1, T2> inventory) {
         mInventory = new Inventory<T1, T2>(inventory);
         mAdapter.notifyDataSetChanged();
     }
 
-    public void notifyDataSetChanged() {
-        mAdapter.notifyDataSetChanged();
-    }
 
 
     public T1 getHeader(int groupOrdinal) {
@@ -338,6 +329,10 @@ public class CollectionView<T1, T2> extends RecyclerView {
 
 
         private Inventory() {
+        }
+
+        public static Inventory newInstance(){
+            return new Inventory();
         }
 
         private Inventory(Inventory copyFrom) {

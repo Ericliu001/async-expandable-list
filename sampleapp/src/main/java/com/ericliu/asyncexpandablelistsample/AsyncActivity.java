@@ -35,7 +35,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
         mAsyncExpandableListView = (AsyncExpandableListView) findViewById(R.id.asyncExpandableCollectionView);
         mAsyncExpandableListView.setCallbacks(this);
 
-        inventory = mAsyncExpandableListView.getInventory();
+        inventory = CollectionView.Inventory.newInstance();
 
         CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
         group1.setHeaderItem("Top Stories");
@@ -57,7 +57,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
         CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6); // 2 is smaller than 10, displayed second
         group6.setHeaderItem("Technology");
 
-        mAsyncExpandableListView.notifyDataSetChanged();
+        mAsyncExpandableListView.updateInventory(inventory);
     }
 
     @Override
