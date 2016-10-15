@@ -7,7 +7,7 @@ async-expandable-list contains 2 View classes: CollectionView and AsynExpandable
 
 Introduction
 -------------------
-CollectionView handles displaying of a list in header-items struture:
+CollectionView handles displaying a list of headers and sub-items:
    * Header A
        * item a1
        * item a2
@@ -156,7 +156,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
         new LoadDataTask(groupOrdinal, mAsyncExpandableListView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
     ```
-  * When the data comes back, call ```java onFinishLoadingGroup(mGroupOrdinal, items); ``` to display data. 
+  * When the data come back, call ```java onFinishLoadingGroup(mGroupOrdinal, items); ``` to display data. 
   ```java
     mAsyncExpandableListView.onFinishLoadingGroup(mGroupOrdinal, items);
   ```
