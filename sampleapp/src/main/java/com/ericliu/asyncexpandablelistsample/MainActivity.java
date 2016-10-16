@@ -65,54 +65,54 @@ public class MainActivity extends Activity implements CollectionViewCallbacks<St
         CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(groupOrdinal);
         News news;
 
-        group1.setHeaderItem("Top Stories");
+        group1.setHeaderItem(getString(R.string.news_header_top_stories));
         news = new News();
-        news.setNewsTitle("Australian Police Arrest 2 Sydney Teens, Seize Knives");
-        news.setNewsBody("SYDNEY - Australian police arrested two teenagers and seized knives in Sydney on Wednesday as the country marked the 14th anniversary of extremist bombings in Indonesia that killed 202, including 88 Australians, police said.");
+        news.setNewsTitle(getString(R.string.news_title1));
+        news.setNewsBody(getString(R.string.news_body1));
         group1.addItem(news);
 
         news = new News();
-        news.setNewsTitle("Queensland report outlines 50 per cent renewable energy map");
-        news.setNewsBody("The security of Queensland's power supply won't be undermined by a government target of 50 per cent renewable energy by 2030, Energy Minister Mark Bailey says.");
+        news.setNewsTitle(getString(R.string.news_title2));
+        news.setNewsBody(getString(R.string.news_body2));
         group1.addItem(news);
 
         news = new News();
-        news.setNewsTitle("VB and sheep farms, Lee brings the laughs");
-        news.setNewsBody("VB beer, barbecues and sheep farms - they're not the kind of things you expect to hear from a visiting leader in a formal speech to federal parliament.");
+        news.setNewsTitle(getString(R.string.news_title_3));
+        news.setNewsBody(getString(R.string.news_body3));
         group1.addItem(news);
 
         CollectionView.InventoryGroup<String, News> group2 = inventory.newGroup(2);
-        group2.setHeaderItem("World");
+        group2.setHeaderItem(getString(R.string.news_header_world));
 
         news = new News();
-        news.setNewsTitle("'Sanctions brought nothing': German politicians call for rapprochement with Russia");
-        news.setNewsBody("The current policy of “saber rattling” should not continue, Erwin Sellering, the prime minister of the German state of Mecklenburg-Western Pomerania, told Germany's weekly Welt am Sonntag newspaper, as he called for lifting anti-Russian sanctions.");
+        news.setNewsTitle(getString(R.string.news_title4));
+        news.setNewsBody(getString(R.string.news_body4));
         group2.addItem(news);
 
         news = new News();
-        news.setNewsTitle("Thai prince to visit ailing king, hospital says as health fears grow");
-        news.setNewsBody("Thai King Bhumibol Adulyadej attends a parade to mark his 81st birthday in Bangkok, Thailand, 02 December 2008. (AAP ). Previous Next Show Grid.");
+        news.setNewsTitle(getString(R.string.news_title5));
+        news.setNewsBody(getString(R.string.news_body5));
         group2.addItem(news);
 
 
 
         CollectionView.InventoryGroup<String, News> group3 = inventory.newGroup(3); // 2 is smaller than 10, displayed second
-        group3.setHeaderItem("Australia");
+        group3.setHeaderItem(getString(R.string.news_header_australia));
 
         news = new News();
-        news.setNewsTitle("'I beg you, do not just put it in the filing cabinet', witness pleads at NT Royal Commission");
-        news.setNewsBody("The survival of Indigenous people in the Northern Territory depended on the outcome of the Royal Commission into Child Protection and Detention, a witness told the commission hearing in Darwin.");
+        news.setNewsTitle(getString(R.string.news_title6));
+        news.setNewsBody(getString(R.string.news_body6));
         group3.addItem(news);
 
         news = new News();
-        news.setNewsTitle("HSC 2016: 77000 students to sit first exams across NSW");
-        news.setNewsBody("More than 77,000 NSW high school students will sit their first HSC exams this week as one of the final cohorts to sit the test before the NSW government enacts sweeping reforms across the state.");
+        news.setNewsTitle(getString(R.string.news_title7));
+        news.setNewsBody(getString(R.string.news_body7));
         group3.addItem(news);
 
 
         news = new News();
-        news.setNewsTitle("Lawyers meet voluntary pro bono target for first time since 2013");
-        news.setNewsBody("A voluntary target for the amount of pro bono work done by Australian lawyers has been met for the first time since 2013. Key points: The Australian Pro Bono Centre's asks lawyers to do 35 hours of free community work a year; Pro bono services can help ...\n");
+        news.setNewsTitle(getString(R.string.news_title8));
+        news.setNewsBody(getString(R.string.news_body8));
         group3.addItem(news);
 
 

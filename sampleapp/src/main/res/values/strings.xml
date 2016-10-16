@@ -23,4 +23,23 @@
     <string name="linear_layout_manager">Linear Layout Manager</string>
     <string name="activity_main">CollectionView</string>
     <string name="activity_async">AsyncExpandableListView</string>
+    <string name="news_header_top_stories">Top Stories</string>
+    <string name="news_title1">Australian Police Arrest 2 Sydney Teens, Seize Knives</string>
+    <string name="news_body1">SYDNEY - Australian police arrested two teenagers and seized knives in Sydney on Wednesday as the country marked the 14th anniversary of extremist bombings in Indonesia that killed 202, including 88 Australians, police said.</string>
+    <string name="news_title2">Queensland report outlines 50 per cent renewable energy map</string>
+    <string name="news_body2">The security of Queensland\'s power supply won\'t be undermined by a government target of 50 per cent renewable energy by 2030, Energy Minister Mark Bailey says.</string>
+    <string name="news_title_3">VB and sheep farms, Lee brings the laughs</string>
+    <string name="news_body3">VB beer, barbecues and sheep farms - they\'re not the kind of things you expect to hear from a visiting leader in a formal speech to federal parliament.</string>
+    <string name="news_header_world">World</string>
+    <string name="news_title4">\'Sanctions brought nothing\': German politicians call for rapprochement with Russia</string>
+    <string name="news_body4">The current policy of “saber rattling” should not continue, Erwin Sellering, the prime minister of the German state of Mecklenburg-Western Pomerania, told Germany\'s weekly Welt am Sonntag newspaper, as he called for lifting anti-Russian sanctions.</string>
+    <string name="news_title5">Thai prince to visit ailing king, hospital says as health fears grow</string>
+    <string name="news_body5">Thai King Bhumibol Adulyadej attends a parade to mark his 81st birthday in Bangkok, Thailand, 02 December 2008. (AAP ). Previous Next Show Grid.</string>
+    <string name="news_header_australia">Australia</string>
+    <string name="news_title6">\'I beg you, do not just put it in the filing cabinet\', witness pleads at NT Royal Commission</string>
+    <string name="news_body6">The survival of Indigenous people in the Northern Territory depended on the outcome of the Royal Commission into Child Protection and Detention, a witness told the commission hearing in Darwin.</string>
+    <string name="news_title7">HSC 2016: 77000 students to sit first exams across NSW</string>
+    <string name="news_body7">More than 77,000 NSW high school students will sit their first HSC exams this week as one of the final cohorts to sit the test before the NSW government enacts sweeping reforms across the state.</string>
+    <string name="news_title8">Lawyers meet voluntary pro bono target for first time since 2013</string>
+    <string name="news_body8">A voluntary target for the amount of pro bono work done by Australian lawyers has been met for the first time since 2013. Key points: The Australian Pro Bono Centre\'s asks lawyers to do 35 hours of free community work a year; Pro bono services can help ...\n</string>
 </resources>
