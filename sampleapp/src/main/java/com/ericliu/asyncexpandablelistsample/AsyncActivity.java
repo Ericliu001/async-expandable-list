@@ -110,7 +110,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
     }
 
     @Override
-    public RecyclerView.ViewHolder newCollectionHeaderView(Context context, int groupOrdinal, ViewGroup parent) {
+    public AsyncHeaderViewHolder newCollectionHeaderView(Context context, int groupOrdinal, ViewGroup parent) {
         // Create a new view.
         View v = LayoutInflater.from(context)
                 .inflate(R.layout.header_row_item_async, parent, false);
@@ -128,7 +128,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
     }
 
     @Override
-    public void bindCollectionHeaderView(Context context, RecyclerView.ViewHolder holder, int groupOrdinal, String headerItem) {
+    public void bindCollectionHeaderView(Context context, AsyncHeaderViewHolder holder, int groupOrdinal, String headerItem) {
         MyHeaderViewHolder myHeaderViewHolder = (MyHeaderViewHolder) holder;
         myHeaderViewHolder.getTextView().setText(headerItem);
     }

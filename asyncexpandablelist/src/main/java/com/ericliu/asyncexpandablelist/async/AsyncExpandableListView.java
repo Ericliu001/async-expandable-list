@@ -1,13 +1,15 @@
 package com.ericliu.asyncexpandablelist.async;
 
-import java.util.List;
-import java.util.WeakHashMap;
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 
 import com.ericliu.asyncexpandablelist.CollectionView;
+import com.ericliu.asyncexpandablelist.CollectionViewCallbacks;
+
+import java.util.List;
+import java.util.WeakHashMap;
 
 
 /**
@@ -64,8 +66,29 @@ public class AsyncExpandableListView<T1, T2> extends CollectionView<T1, T2> {
     }
 
 
-    public void setCallbacks(AsyncExpandableListViewCallbacks<T1, T2> callbacks) {
-        setCollectionCallbacks(callbacks);
+    public void setCallbacks(final AsyncExpandableListViewCallbacks<T1, T2> callbacks) {
+        CollectionViewCallbacks<T1, T2> collectionViewCallbacks = new CollectionViewCallbacks<T1, T2>() {
+            @Override
+            public ViewHolder newCollectionHeaderView(Context context, int groupOrdinal, ViewGroup parent) {
+                return callbacks.newCollectionHeaderView(context, groupOrdinal, parent);
+            }
+
+            @Override
+            public ViewHolder newCollectionItemView(Context context, int groupOrdinal, ViewGroup parent) {
+                return callbacks.newCollectionItemView(context, groupOrdinal, parent);
+            }
+
+            @Override
+            public void bindCollectionHeaderView(Context context, ViewHolder holder, int groupOrdinal, T1 headerItem) {
+                callbacks.bindCollectionHeaderView(context, (AsyncHeaderViewHolder) holder, groupOrdinal, headerItem);
+            }
+
+            @Override
+            public void bindCollectionItemView(Context context, ViewHolder holder, int groupOrdinal, T2 item) {
+                callbacks.bindCollectionItemView(context, holder, groupOrdinal, item);
+            }
+        };
+        setCollectionCallbacks(collectionViewCallbacks);
         mCallbacks = callbacks;
     }
 
