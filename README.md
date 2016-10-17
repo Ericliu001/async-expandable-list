@@ -9,7 +9,7 @@ Add async-expandable-list to your project
 ----------------------------
 Gradle:
 ```gradle
-compile 'com.ericliu.asyncexpandablelist:asyncexpandablelist:1.0.7'
+compile 'com.ericliu.asyncexpandablelist:asyncexpandablelist:1.0.8'
 ```
 Please make sure you have jcenter() in your project's repository. Check build.gradle file under the project's root directory. Add the following lines if they are missing. 
 ```gradle
@@ -133,8 +133,8 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   ```
   
   
-  * In particular the ``` void onStartLoadingGroup(int groupOrdinal); ``` method in the AsyncExpandableListViewCallbacks will be triggered on the header item click events, which gives the client a changes to trigger loading sub-item data calls here. When the call comes back, the client should call the method ``` onFinishLoadingGroup(mGroupOrdinal, items);``` on the AsyncExpandableListView instance to display the data as well as updating UI.
-  * The steps to add groups is the same as CollectionView mentioned above, but we don't need to add sub-items to groups at this step, as the code snippet showed below:
+  * In particular the ``` void onStartLoadingGroup(int groupOrdinal) ``` method in the AsyncExpandableListViewCallbacks will be triggered on the header item click events, which gives the client a change to trigger loading sub-item data calls. When the call comes back, the client should call the method ``` onFinishLoadingGroup(mGroupOrdinal, items)``` on the AsyncExpandableListView instance to display the data as well as updating UI.
+  * The steps to add groups are the same as CollectionView mentioned above, but we don't need to add sub-items to groups at this point because only headers will be shown in the beginning in an expandable list, as the code snippet showed below:
 ```java
  inventory = CollectionView.Inventory.newInstance();
 
@@ -142,20 +142,20 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
         group1.setHeaderItem("Top Stories");
 
 
-        CollectionView.InventoryGroup<String, News> group2 = inventory.newGroup(2);
+        CollectionView.InventoryGroup<String, News> group2 = inventory.newGroup(2); // 2 is the second smallest ordinal, displayed second
         group2.setHeaderItem("World");
 
 
-        CollectionView.InventoryGroup<String, News> group3 = inventory.newGroup(3); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group3 = inventory.newGroup(3);
         group3.setHeaderItem("Australia");
 
-        CollectionView.InventoryGroup<String, News> group4 = inventory.newGroup(4); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group4 = inventory.newGroup(4); 
         group4.setHeaderItem("International");
 
-        CollectionView.InventoryGroup<String, News> group5 = inventory.newGroup(5); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group5 = inventory.newGroup(5); 
         group5.setHeaderItem("Businesses");
 
-        CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6); 
         group6.setHeaderItem("Technology");
 
         mAsyncExpandableListView.updateInventory(inventory);
@@ -175,3 +175,9 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   ```java
     mAsyncExpandableListView.onFinishLoadingGroup(mGroupOrdinal, items);
   ```
+
+References:
+-------------------
+Inspired by CollectionView in Google iosche
+
+https://github.com/google/iosched/blob/master/android/src/main/java/com/google/samples/apps/iosched/ui/widget/CollectionView.java
