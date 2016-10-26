@@ -1,15 +1,17 @@
 package com.ericliu.asyncexpandablelist.async;
 
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.ArrayMap;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 
 import com.ericliu.asyncexpandablelist.CollectionView;
 import com.ericliu.asyncexpandablelist.CollectionViewCallbacks;
-
-import java.util.List;
-import java.util.WeakHashMap;
 
 
 /**
@@ -19,7 +21,7 @@ import java.util.WeakHashMap;
 public class AsyncExpandableListView<T1, T2> extends CollectionView<T1, T2> {
 
     private AsyncExpandableListViewCallbacks<T1, T2> mCallbacks;
-    protected WeakHashMap<OnGroupStateChangeListener, Integer> mOnGroupStateChangeListeners = new WeakHashMap<>();
+    protected Map<Integer, OnGroupStateChangeListener> mOnGroupStateChangeListeners = new ArrayMap<>();
     protected int expandedGroupOrdinal = -1;
 
 
@@ -40,7 +42,7 @@ public class AsyncExpandableListView<T1, T2> extends CollectionView<T1, T2> {
     protected CollectionView.RowInformation<T1, T2> populatRoweData(RecyclerView.ViewHolder holder, int position) {
         CollectionView.RowInformation<T1, T2> rowInfo = super.populatRoweData(holder, position);
         if (rowInfo.isHeader()) {
-            mOnGroupStateChangeListeners.put((AsyncHeaderViewHolder) holder, rowInfo.getGroupOrdinal());
+            mOnGroupStateChangeListeners.put(rowInfo.getGroupOrdinal(), (AsyncHeaderViewHolder) holder);
         }
 
         return rowInfo;
@@ -95,10 +97,9 @@ public class AsyncExpandableListView<T1, T2> extends CollectionView<T1, T2> {
     protected void collapseGroup(int groupOrdinal) {
         expandedGroupOrdinal = -1;
         removeAllItemsInGroup(groupOrdinal);
-        for (OnGroupStateChangeListener onGroupStateChangeListener : mOnGroupStateChangeListeners.keySet()) {
-            if (mOnGroupStateChangeListeners.get(onGroupStateChangeListener) == groupOrdinal) {
-                onGroupStateChangeListener.onGroupCollapsed();
-            }
+        OnGroupStateChangeListener onGroupStateChangeListener = mOnGroupStateChangeListeners.get(groupOrdinal);
+        if (onGroupStateChangeListener != null) {
+            onGroupStateChangeListener.onGroupCollapsed();
         }
     }
 
@@ -114,10 +115,9 @@ public class AsyncExpandableListView<T1, T2> extends CollectionView<T1, T2> {
 
         expandedGroupOrdinal = groupOrdinal;
         mCallbacks.onStartLoadingGroup(groupOrdinal);
-        for (OnGroupStateChangeListener onGroupStateChangeListener : mOnGroupStateChangeListeners.keySet()) {
-            if (mOnGroupStateChangeListeners.get(onGroupStateChangeListener) == groupOrdinal) {
-                onGroupStateChangeListener.onGroupStartExpending();
-            }
+        OnGroupStateChangeListener onGroupStateChangeListener = mOnGroupStateChangeListeners.get(groupOrdinal);
+        if (onGroupStateChangeListener != null) {
+            onGroupStateChangeListener.onGroupStartExpending();
         }
     }
 
@@ -128,10 +128,9 @@ public class AsyncExpandableListView<T1, T2> extends CollectionView<T1, T2> {
         }
 
         addItemsInGroup(expandedGroupOrdinal, items);
-        for (OnGroupStateChangeListener onGroupStateChangeListener : mOnGroupStateChangeListeners.keySet()) {
-            if (mOnGroupStateChangeListeners.get(onGroupStateChangeListener) == expandedGroupOrdinal) {
-                onGroupStateChangeListener.onGroupExpanded();
-            }
+        OnGroupStateChangeListener onGroupStateChangeListener = mOnGroupStateChangeListeners.get(groupOrdinal);
+        if (onGroupStateChangeListener != null) {
+            onGroupStateChangeListener.onGroupExpanded();
         }
 
         return true;
