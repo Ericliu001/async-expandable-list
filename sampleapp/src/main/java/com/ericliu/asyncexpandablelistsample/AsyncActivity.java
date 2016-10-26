@@ -1,5 +1,9 @@
 package com.ericliu.asyncexpandablelistsample;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -16,10 +20,6 @@ import com.ericliu.asyncexpandablelist.CollectionView;
 import com.ericliu.asyncexpandablelist.async.AsyncExpandableListView;
 import com.ericliu.asyncexpandablelist.async.AsyncExpandableListViewCallbacks;
 import com.ericliu.asyncexpandablelist.async.AsyncHeaderViewHolder;
-
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class AsyncActivity extends Activity implements AsyncExpandableListViewCallbacks<String, News> {
@@ -45,17 +45,35 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
         group2.setHeaderItem("World");
 
 
-        CollectionView.InventoryGroup<String, News> group3 = inventory.newGroup(3); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group3 = inventory.newGroup(3);
         group3.setHeaderItem("Australia");
 
-        CollectionView.InventoryGroup<String, News> group4 = inventory.newGroup(4); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group4 = inventory.newGroup(4);
         group4.setHeaderItem("International");
 
-        CollectionView.InventoryGroup<String, News> group5 = inventory.newGroup(5); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group5 = inventory.newGroup(5);
         group5.setHeaderItem("Businesses");
 
-        CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6); // 2 is smaller than 10, displayed second
+        CollectionView.InventoryGroup<String, News> group6 = inventory.newGroup(6);
         group6.setHeaderItem("Technology");
+
+        CollectionView.InventoryGroup<String, News> group7 = inventory.newGroup(7);
+        group7.setHeaderItem("Environment");
+
+        CollectionView.InventoryGroup<String, News> group8 = inventory.newGroup(8);
+        group8.setHeaderItem("Health");
+
+        CollectionView.InventoryGroup<String, News> group9 = inventory.newGroup(9);
+        group9.setHeaderItem("Science");
+
+        CollectionView.InventoryGroup<String, News> group10 = inventory.newGroup(10);
+        group10.setHeaderItem("Sports");
+
+        CollectionView.InventoryGroup<String, News> group11 = inventory.newGroup(11);
+        group11.setHeaderItem("Entertainment");
+
+        CollectionView.InventoryGroup<String, News> group12 = inventory.newGroup(12);
+        group12.setHeaderItem("Politics");
 
         mAsyncExpandableListView.updateInventory(inventory);
     }
