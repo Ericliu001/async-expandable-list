@@ -2,9 +2,9 @@ package com.ericliu.asyncexpandablelist.async;
 
 import java.util.List;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 import android.content.Context;
-import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
@@ -20,7 +20,7 @@ import com.ericliu.asyncexpandablelist.CollectionViewCallbacks;
 public class AsyncExpandableListView<T1, T2> extends CollectionView<T1, T2> {
 
     private AsyncExpandableListViewCallbacks<T1, T2> mCallbacks;
-    protected Map<OnGroupStateChangeListener, Integer> mOnGroupStateChangeListeners = new ArrayMap<>();
+    protected Map<OnGroupStateChangeListener, Integer> mOnGroupStateChangeListeners = new WeakHashMap<>();
     protected int expandedGroupOrdinal = -1;
 
 
