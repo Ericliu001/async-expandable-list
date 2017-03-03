@@ -1,4 +1,6 @@
 # async-expandable-list
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Async%20Expandable%20List-green.svg?style=flat)](https://android-arsenal.com/details/1/5092)
+
 ============
 async-expandable-list contains 2 View classes: CollectionView and AsyncExpandableListView.
 
