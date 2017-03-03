@@ -53,7 +53,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
 ```
 
 2. Pouplating data
-  * find the CollectionView instance and call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and bind data into the ViewHoders - works the same as the RecyclerView.Adapter except that you don't have to worry about view types.
+  * find the CollectionView instance and call setCollectionCallbacks() to setup callbacks for the CollectionView, which will be responsible for creating ViewHolders and binding data into the ViewHoders - works the same as the RecyclerView.Adapter except that you don't have to worry about view types.
   * Create a CollectionView.Inventory instance, the Inventory instance represents the whole data structure that's gonna be populated into the list.
     
   
