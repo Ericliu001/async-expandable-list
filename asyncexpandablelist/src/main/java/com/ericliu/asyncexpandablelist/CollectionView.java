@@ -21,7 +21,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
     private static final int VIEW_TYPE_NON_HEADER = 10;
     protected final LinearLayoutManager mLinearLayoutManager;
 
-    protected Inventory<T1, T2> mInventory = new Inventory();
+    protected Inventory<T1, T2> mInventory = new Inventory<>();
     private CollectionViewCallbacks<T1, T2> mCallbacks = null;
     private MyListAdapter mAdapter = null;
 
@@ -53,7 +53,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
 
 
     public void updateInventory(final Inventory<T1, T2> inventory) {
-        mInventory = new Inventory<T1, T2>(inventory);
+        mInventory = new Inventory<>(inventory);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -224,7 +224,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
 
 
     protected RowInformation<T1, T2> computeRowContent(int row) {
-        RowInformation<T1, T2> result = new RowInformation<T1, T2>();
+        RowInformation<T1, T2> result = new RowInformation<>();
         int rowCounter = 0;
         int positionInGroup;
 
@@ -335,7 +335,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
             return new Inventory();
         }
 
-        private Inventory(Inventory copyFrom) {
+        private Inventory(Inventory<T1, T2> copyFrom) {
             mGroups = copyFrom.mGroups.clone();
         }
 
@@ -344,7 +344,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
         }
 
         public InventoryGroup<T1, T2> newGroup(int groupOrdinal) {
-            InventoryGroup<T1, T2> group = new InventoryGroup(groupOrdinal);
+            InventoryGroup<T1, T2> group = new InventoryGroup<>(groupOrdinal);
             addGroup(group);
             return group;
         }
@@ -354,7 +354,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
         }
 
 
-        private InventoryGroup findGroup(int groupOrdinal) {
+        private InventoryGroup<T1, T2> findGroup(int groupOrdinal) {
             return mGroups.get(groupOrdinal);
         }
 
