@@ -9,8 +9,10 @@ Add async-expandable-list to your project
 ----------------------------
 Gradle:
 ```gradle
-compile 'com.ericliu.asyncexpandablelist:asyncexpandablelist:1.0.8'
+compile 'com.ericliu.asyncexpandablelist:asyncexpandablelist:1.1'
 ```
+
+
 Please make sure you have jcenter() in your project's repository. Check build.gradle file under the project's root directory. Add the following lines if they are missing. 
 ```gradle
 allprojects {
