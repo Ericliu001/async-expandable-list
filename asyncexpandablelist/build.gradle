@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "1.0.8"
+version = "1.1"
 
 android {
     compileSdkVersion rootProject.compileSdk
@@ -90,30 +90,6 @@ artifacts {
     archives sourcesJar
 }
 
-
-
-//ext {
-//    bintrayRepo = 'maven'
-//    bintrayName = 'async-expandable-list'
-//
-//    publishedGroupId = 'com.ericliu.asyncexpandablelist'
-//    libraryName = 'async-expandable-list'
-//    artifact = 'asyncexpandablelist'
-//    libraryDescription = 'Async loads'
-//
-//
-//    siteUrl = siteUrl
-//
-//    libraryVersion = '1.0.1'
-//
-//    licenseName = 'The MIT License (MIT)'
-//    licenseUrl = 'https://opensource.org/licenses/MIT'
-//    allLicenses = ["MIT"]
-//
-//    developerId = 'ericliu001'
-//    developerName = 'Eric Liu'
-//    developerEmail = 'eric.liu.developer@gmail.com'
-//}
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
