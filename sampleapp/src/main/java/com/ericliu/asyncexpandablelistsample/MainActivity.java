@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements CollectionViewCallbacks<St
         mCollectionView = (CollectionView) findViewById(R.id.collectionView);
         mCollectionView.setCollectionCallbacks(this);
 
-        inventory = CollectionView.Inventory.newInstance();
+        inventory = new CollectionView.Inventory<>();
 
         // groupOrdinal dictates the sequence of groups to be displayed in the list,
         // the groups will be displayed in an ascending order on groupOrdinal

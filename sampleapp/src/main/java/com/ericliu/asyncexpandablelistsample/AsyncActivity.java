@@ -1,9 +1,5 @@
 package com.ericliu.asyncexpandablelistsample;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -21,6 +17,10 @@ import com.ericliu.asyncexpandablelist.async.AsyncExpandableListView;
 import com.ericliu.asyncexpandablelist.async.AsyncExpandableListViewCallbacks;
 import com.ericliu.asyncexpandablelist.async.AsyncHeaderViewHolder;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AsyncActivity extends Activity implements AsyncExpandableListViewCallbacks<String, News> {
 
@@ -35,7 +35,7 @@ public class AsyncActivity extends Activity implements AsyncExpandableListViewCa
         mAsyncExpandableListView = (AsyncExpandableListView) findViewById(R.id.asyncExpandableCollectionView);
         mAsyncExpandableListView.setCallbacks(this);
 
-        inventory = CollectionView.Inventory.newInstance();
+        inventory = new CollectionView.Inventory<>();
 
         CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
         group1.setHeaderItem("Top Stories");

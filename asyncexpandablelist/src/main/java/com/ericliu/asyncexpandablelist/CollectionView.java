@@ -328,11 +328,7 @@ public class CollectionView<T1, T2> extends RecyclerView {
         private SparseArray<InventoryGroup<T1, T2>> mGroups = new SparseArray<>();
 
 
-        private Inventory() {
-        }
-
-        public static Inventory newInstance(){
-            return new Inventory();
+        public Inventory() {
         }
 
         private Inventory(Inventory<T1, T2> copyFrom) {
