@@ -9,8 +9,10 @@ Add async-expandable-list to your project
 ----------------------------
 Gradle:
 ```gradle
-compile 'com.ericliu.asyncexpandablelist:asyncexpandablelist:1.0.8'
+compile 'com.ericliu.asyncexpandablelist:asyncexpandablelist:1.1.0'
 ```
+
+
 Please make sure you have jcenter() in your project's repository. Check build.gradle file under the project's root directory. Add the following lines if they are missing. 
 ```gradle
 allprojects {
@@ -69,7 +71,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
         mCollectionView.setCollectionCallbacks(this);
         
         // the inventory represent all the whole data structure that's gonna be populated into the list.
-        inventory = CollectionView.Inventory.newInstance();
+        inventory = new CollectionView.Inventory<>();
 
   ```
   * Create InventoryGroup intances and add header item and sub-items into the InventoryGroup instance.
@@ -136,7 +138,7 @@ AsyncExpandableListView displays a list of headers and loads a sub-list under a 
   * In particular the ``` void onStartLoadingGroup(int groupOrdinal) ``` method in the AsyncExpandableListViewCallbacks will be triggered on the header item click events, which gives the client a change to trigger loading sub-item data calls. When the call comes back, the client should call the method ``` onFinishLoadingGroup(mGroupOrdinal, items)``` on the AsyncExpandableListView instance to display the data as well as updating UI.
   * The steps to add groups are the same as CollectionView mentioned above, but we don't need to add sub-items to groups at this point because only headers will be shown in the beginning in an expandable list, as the code snippet showed below:
 ```java
- inventory = CollectionView.Inventory.newInstance();
+ inventory = new CollectionView.Inventory<>();
 
         CollectionView.InventoryGroup<String, News> group1 = inventory.newGroup(0); // groupOrdinal is the smallest, displayed first
         group1.setHeaderItem("Top Stories");
