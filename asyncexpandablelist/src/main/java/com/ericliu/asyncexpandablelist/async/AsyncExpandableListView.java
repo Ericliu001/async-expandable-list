@@ -114,12 +114,12 @@ public class AsyncExpandableListView<T1, T2> extends CollectionView<T1, T2> {
         }
 
         expandedGroupOrdinal = groupOrdinal;
-        mCallbacks.onStartLoadingGroup(groupOrdinal);
         for (OnGroupStateChangeListener onGroupStateChangeListener : mOnGroupStateChangeListeners.keySet()) {
             if (mOnGroupStateChangeListeners.get(onGroupStateChangeListener) == groupOrdinal) {
                 onGroupStateChangeListener.onGroupStartExpending();
             }
         }
+        mCallbacks.onStartLoadingGroup(groupOrdinal);
     }
 
 
